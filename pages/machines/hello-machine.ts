@@ -1,17 +1,18 @@
 import {createMachine} from 'xstate'
 
-const helloMachine = createMachine({
+export const helloMachine = createMachine({
+  predictableActionArguments: true,
   id: 'hello',
-  initial: 'unHover',
+  initial: 'notHovered',
   states: {
-    unHover: {
+    notHovered: {
       on: {
-        onHovered: 'hover',
+        onMouseover: 'hovered',
       },
     },
-    hover: {
+    hovered: {
       on: {
-        onUnhovered: 'unHover',
+        onMouseout: 'notHovered',
       },
     },
   },
