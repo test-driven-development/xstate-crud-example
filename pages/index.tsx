@@ -26,6 +26,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
+      <pre>{JSON.stringify(state.context)}</pre>
     </div>
   )
 }
