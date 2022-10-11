@@ -49,6 +49,11 @@ export const todosMachineFactory = () =>
             todos: event.data,
           }
         }),
+        setErrorInContext: assign((_, event) => {
+          return {
+            error: (event.data as Error).message,
+          }
+        }),
       },
     },
   )
