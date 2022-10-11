@@ -26,12 +26,13 @@ export const todosMachineFactory = () =>
             src: 'fetch',
             onDone: [
               {
-                target: 'fetched',
                 actions: 'setTodosInContext',
+                target: 'fetched',
               },
             ],
             onError: [
               {
+                actions: 'setErrorInContext',
                 target: 'errored',
               },
             ],
