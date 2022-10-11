@@ -1,9 +1,13 @@
 import {createMachine, assign} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHQBmYyxAkmRCQXspAMQYWXkBuqANZU0GbPmLkqtekSYs2HCAgGolJVGQDaABgC6iUAAdMJZJrJGQAD0RYATADYAnJQAcARicBWACwAzC4OAOzuobohADQgAJ72DsGUfp6eLu6+AX4uOU5+AL75MWKYuISkvLKMzKzsXGAATg2oDZTGADbs1C04lCUS5dI0dNWKdSpqGlp6hkggprDmltZ2CFh+7u6Uuik+IQ4OAYcuTu4+MfFrnrpuARk+TgHeDroBPgGFRSBk6HDW-WUpJURvIakpINYFkstCt7D5dFsXLpPD54QEQvCXPC-Bd7AEdslPO4ET5ia9siFCsV0KVJBUZCCIXMoRYYXNVo4-B4XqEci8XCFdIcnLi1qFES93H49i5PIKAnkqSAAXSho1mg0mSYzKyrOz7H4QgFKNcXE9nhkiX4RXFEFsnEKQtKFUaMRklSrBhRITrlvq1u8HJQkSi0RibudbWt0U5CUb4QcMq53J98kA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHQBmYyxAkmRCQXspAMQYWXkBuqANZU0GbPmLkqtekSYs2HCAgGolJVGQDaABgC6iUAAdMJZJrJGQAD0RYATADYAnJQAcARicBWACwAzC4OAOzuobohADQgAJ72DsGUfp6eLu6+AX4uOU5+AL75MWKYuISkvLKMzKzsXGAATg2oDZTGADbs1C04lCUS5dI0dNWKdSpqGlp6hkggprDmltZ2CFg+kR6B2T4BIT5OuuEx8WueQR7uAQGePqlOIefXhUUgZOhw1v1lUpUj8jUlJBrAslloVvYNu5KC5dLcNnsNi4Nn4TvYAro-MlPO4jj5cbosi4QoViuhSpIKjJ-sC5qCLOC5qtHFjwrpQjkHLpieyAk40WtQtDgkc-D4Qi5PCFCXlSSBvpSho1mg1aSYzAyrEz7H4QgFKJ5uTdvA4Mji-Py4ohoYdQmK+Xr9hk5QrBhQQRrltq1rsHDC4T4EftuT4BVg9k5sXrAp4UsFdk4XvkgA */
   createMachine(
     {
+      context: {
+        todos: [] as string[],
+        error: undefined as string | undefined,
+      },
       tsTypes:
         {} as import('./todos-machine.typegen').Typegen0,
       schema: {
@@ -12,10 +16,6 @@ export const todosMachineFactory = () =>
             data: string[]
           }
         },
-      },
-      context: {
-        todos: [] as string[],
-        error: undefined as string | undefined,
       },
       predictableActionArguments: true,
       id: 'todos-machine',
