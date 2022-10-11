@@ -10,6 +10,7 @@ const Home: NextPage = () => {
   const [state, send] = useMachine(todosMachine, {
     services: {
       fetch: async () => {
+        throw Error('fetch failed')
         return [
           'todo1',
           'todo2',
