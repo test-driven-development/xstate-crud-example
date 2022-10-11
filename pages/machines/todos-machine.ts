@@ -1,8 +1,25 @@
 import {createMachine} from 'xstate'
 
 export const todosMachine =
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdAHarIASqAbmAE6QDEqFAsqgK6xgNmiUAAdMJZCQ7CQAD0QAmAMwA2MgFYAjABYADMqXrtSgBxLjAGhABPRJt2aNKhQE4jKwwt0B2E94C+-lZoGNj4xOREgiwQ7Fy8-LzIMmKwElIUMvIICq5k2graJmbG2prqxSpWtghY6i5krpom6t7NJtouxSaBQSBUEHAyIZi4hKSU1HSMMSniktJIcoguumQmupulpgoqukpK1XaOPip7muZnLgUqmoHB6KPhE1EzkHNpC5lL2abajUpvICCto9iYjggLhpvGcHJcVNcFN51PcQCMwuMSB90otQNkzutNrptiZdvtDjZEFgLo4mroXKptN5mfsAr0gA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHRmrIASqAbmAE6QDEqZAsqgK6wwTVolAAHTCWQkuokAA9EWACwBmVZQAMqgOw7lygGwAOAEwBOAKzLLAGhABPJacPnKxgIw7Va4+fMexoYeAL4h9mgY2PjE5FREwmwQnDz8gvzIchKwUjJkcooIWK4elPouni6qxpbmyvZORcaalB5eZoaqhnr++mHhIDQQcHKRmLiEpBTUtAzMSVmS0rJICkombhaalvqWqrWamh4NzjqW7qbaZ6qaxs2q5mER6OMxU-GJkIs5y-mrhSoPC1tFdLIdlJpTDsTk1DK1LncIf5gh5TDoniAxtFJnFvrkVqAAToPOdyiZUZ0anUYVgfDp3B5zJ0XGDdEz+iEgA */
   createMachine({
-    predictableActionArguments: true,
     id: 'todos-machine',
+    predictableActionArguments: true,
+    initial: 'notHovered',
+    states: {
+      notHovered: {
+        on: {
+          onMouseover: {
+            target: 'hovered',
+          },
+        },
+      },
+      hovered: {
+        on: {
+          onMouseout: {
+            target: 'notHovered',
+          },
+        },
+      },
+    },
   })
