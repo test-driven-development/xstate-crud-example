@@ -12,8 +12,7 @@ export interface Typegen0 {
     guards: never
     delays: never
   }
-  eventsCausingActions: {
-    alertComplete: 'onComplete'
+  eventsCausingActions: {}
   }
   eventsCausingServices: {}
   eventsCausingGuards: {}

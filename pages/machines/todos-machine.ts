@@ -7,23 +7,8 @@ export const todosMachineFactory = () =>
       predictableActionArguments: true,
       id: 'todos-machine',
       initial: 'fetchIndicated',
-      schema: {
-        events: {} as
-          | {type: 'onComplete'; todos: string[]}
-          | {type: 'onError'; error: string},
-      },
-      tsTypes:
-        {} as import('./todos-machine.typegen').Typegen0,
       states: {
         fetchIndicated: {
-          on: {
-            onComplete: {
-              target: 'fetched',
-              actions: 'alertComplete',
-            },
-            onError: {
-              target: 'errored',
-            },
           },
         },
         fetched: {},
@@ -31,9 +16,6 @@ export const todosMachineFactory = () =>
       },
     },
     {
-      actions: {
-        alertComplete: (_, event) =>
-          alert(JSON.stringify(event.todos)),
-      },
+      actions: {},
     },
   )
