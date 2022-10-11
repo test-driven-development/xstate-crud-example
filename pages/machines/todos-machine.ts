@@ -51,7 +51,9 @@ export const todosMachineFactory = () =>
           states: {
             update: {
               on: {
-                onUpdate: {},
+                onUpdate: {
+                  actions: 'setUpdateInContext',
+                },
               },
             },
           },
