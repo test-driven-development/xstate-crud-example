@@ -1,8 +1,23 @@
 import {createMachine} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHRmrIASqAbmAE6QDEqZAsqgK6wwTVolAAHTCWQkuokAA9EWAEwAWSgEYNygAwA2ZXoDMRvXoAcGowBoQAT0THKygKx7V7natUvzAdg0-PQBfYNs0DGx8YnIqImE2CE4efkF+ZDkJWCkZMjlFBBUdSg8jPxcjAE4jVWVTFxdbB0K9Ss1VKorqytqPULCQGgg4OQjMXEJSCmpaBmZEzMlpWSQFJUqXEp0-Ix0NSuqNHUtzJqUNEt2q2p0dDb8g1VDw9HHoqbiEyEXs5bzVgpBSiVcz6ZTKB57FyuZRnFqUPyqHq7AyVLyqUFPAZjKKTWI-HIrUAFLBaNqqba7faHY4aU72c6qC4aDq6HQufSg-RY0JAA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHQBmYyxAkmRCQXspAMSpkDCqOAA4AbOmEShBmEshI8JIAB6IsARgDMAFkoAGLQHYAbOo3qAHAFZ9FgEwAaEAE8VqwzcqG3l9eps79AJw6hgC+IQ5oGNj4xORUtPRETCxsHBDcZACiAE7ZqNkKUrAycmQKyghYJqqUmmaGwToB+vomZuoWDs6VZvqUNsa9hgFmZqoWEzZh4SBk6HAKkZi4hKQUNHSMzKzskIXSsvJISipaFv0Bmjqqqjb6N4aBhl0uhmYehhZmAW+BN21hCLoZYxNbxTZEPbHIolI6gCpqVQBShmHTfdTWTxImx3F6VW6UCaaEYWczjCzNXyAkBLaKrOKUMC5fJQyQHUrlU4aSgaazjTS8v54tTuIkkskTZo2MzU2krWIUfbFQ5lY4I9TDC5XG53B5PYU2K4fCy3L6te6qaYhIA */
   createMachine({
     predictableActionArguments: true,
     id: 'todos-machine',
+    initial: 'fetchIndicated',
+    states: {
+      fetchIndicated: {
+        on: {
+          onComplete: {
+            target: 'fetched',
+          },
+          onError: {
+            target: 'errored',
+          },
+        },
+      },
+      fetched: {},
+      errored: {},
+    },
   })
