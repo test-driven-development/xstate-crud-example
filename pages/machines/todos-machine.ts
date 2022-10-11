@@ -27,6 +27,7 @@ export const todosMachineFactory = () =>
             onDone: [
               {
                 target: 'fetched',
+                actions: 'setTodosInContext',
               },
             ],
             onError: [
