@@ -1,7 +1,7 @@
 import {createMachine, assign} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHQBmYyxAkmRCQXspAMQYWXkBuqANZU0GbPmLkqtekSYs2HCAgGolJVGQDaABgC6iUAAdMJZJrJGQAD0RYATAFYAzJQCcTgIxP3ugBy6nl4A7AA0IACe9g6elLoh-i7+SV4AbCG6aQC+2RFimLiEpLyyjMys7FxgAE41qDWUxgA27NQNOJQFEsXSNHTlilUqahpaeoZIIKaw5pbWdghYTk668cnu-gAsLmkbDmkR0UteWw6UTlvuae4Hul73ugm5+eiFkiUyA0RcBDVgVWsMzmWgWiHcW0oIVuWxCKxcB3cLnc4Si9i8DjcuhWW38XhRIXxIRCuTyIDI6Dg1m6RSkpW+CkqyiBZgsoKmi2W3niKN0yN2Lhc0KcR3sLgS8W2Wz2Dm2aWlWxeIBpHz6ZR+EBZszZVg5iH8IUoN3cKLSaQczi8QsOaKWsq8FwNmMuDlh2IcSpVvV4tXq-01U2BOrBS28Tko4txTzS6T8sVFCHDSL2GRS4uhGPcnrePTpVD+AOZgdZ8z1CBSPNdAStV3xLi8CaTAtTSQS7itOTJXrzWpButAnKccJ5mX5eyFngTWAnkqFWyumL2oUVpKAA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHQBmYyxAkmRCQXspAMQYWXkBuqANZU0GbPmLkqtekSYs2HCAgGolJVGQDaABgC6iUAAdMJZJrJGQAD0RYAzACYAHJQCsD3Q4CMATl0XHxddHwAWABoQAE97Jz8fSl0ANncwv3iHZPiXAF9cqLFMXEJSXllGZlZ2LjAAJzrUOspjABt2aiacSiKJUukaOkrFGpU1DS09QyQQU1hzS2s7BCw0gHZKMMyfHLDdPyjYlZ81sKT3ZIcHEIc-Nd8XZPzC9GLJMpkhoi4COrAa6xzBZaJb2PzJShBJyeHzONbuPyPZKHew+VKUZIBdz+Jy6MJrNEuJz5AogMjoODWXolKTlL4KarKQFmCwgmbLVbYpJ3bx+LJXNZ+dwolZeDaBMJhS6uKWy54ganvAYVb4QZnzVlWdmo3QbeE7NaGlz4naRGJxNYQ073BxrJw7FI+dzueWK-q8eqNP5qmZAzWglbYxJhdwuZ1eTHgvkizmQ3EOUNOonpdxOJ6kt20qi-f7KPhkYwAV2Q6uBWtAHL8Z0tj0CfLTJwO5oQTrjyRCyVSTqu2PTL3ENI+lBzo1L-u1x2ClBryTrzmSjZjF0oJycIZSATx9r8rtefSzY8WE9W8O5a15-NtQpjV6SLiyGScgrXWxJuSAA */
   createMachine(
     {
       context: {
@@ -46,7 +46,12 @@ export const todosMachineFactory = () =>
           },
         },
         errored: {},
-        created: {},
+        created: {
+          initial: 'input',
+          states: {
+            input: {},
+          },
+        },
       },
     },
     {
