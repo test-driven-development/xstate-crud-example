@@ -33,7 +33,7 @@ export const todosMachineFactory = () =>
     {
       actions: {
         alertComplete: (_, event) =>
-          alert(JSON.stringify(event)),
+          alert(JSON.stringify(event.todos)),
       },
     },
   )
