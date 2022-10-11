@@ -18,7 +18,7 @@ export interface Typegen0 {
     fetch: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
   }
   missingImplementations: {
-    actions: 'setUpdateInContext'
+    actions: never
     services: 'fetch'
     guards: never
     delays: never
