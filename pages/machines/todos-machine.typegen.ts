@@ -32,6 +32,6 @@ export interface Typegen0 {
   }
   eventsCausingGuards: {}
   eventsCausingDelays: {}
-  matchesStates: 'errored' | 'fetchIndicated' | 'fetched'
+  matchesStates: 'created' | 'errored' | 'fetchIndicated' | 'fetched'
   tags: never
 }
