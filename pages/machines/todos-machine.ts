@@ -13,6 +13,10 @@ export const todosMachineFactory = () =>
           }
         },
       },
+      context: {
+        todos: [] as string[],
+        error: undefined as string | undefined,
+      },
       predictableActionArguments: true,
       id: 'todos-machine',
       initial: 'fetchIndicated',
