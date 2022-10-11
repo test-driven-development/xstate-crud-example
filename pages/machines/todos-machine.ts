@@ -6,6 +6,11 @@ export const todosMachineFactory = () =>
     predictableActionArguments: true,
     id: 'todos-machine',
     initial: 'fetchIndicated',
+    schema: {
+      events: {} as
+        | {type: 'onComplete'; todos: string[]}
+        | {type: 'onError'; error: string},
+    },
     states: {
       fetchIndicated: {
         on: {
