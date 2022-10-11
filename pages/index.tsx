@@ -7,40 +7,22 @@ const Home: NextPage = () => {
   const [todosMachine] = useState(
     todosMachineFactory(),
   )
-  const [state, send] = useMachine(todosMachine)
+  const [state, send] = useMachine(todosMachine, {
+    services: {
+      fetch: async () => {
+        return [
+          'todo1',
+          'todo2',
+          'todo3',
+          'todo4',
+          'todo5',
+          'todo6',
+        ]
+      },
+    },
+  })
 
-  return (
-    <div>
-      {JSON.stringify(state.value)}
-      <button
-        onClick={() =>
-          send({
-            type: 'onComplete',
-            todos: [
-              'todo1',
-              'todo2',
-              'todo3',
-              'todo4',
-              'todo5',
-              'todo6',
-            ],
-          })
-        }
-      >
-        Complete
-      </button>
-      <button
-        onClick={() =>
-          send({
-            type: 'onError',
-            error: 'something went wrong',
-          })
-        }
-      >
-        Error
-      </button>
-    </div>
-  )
+  return <div>{JSON.stringify(state.value)}</div>
 }
 
 export default Home
