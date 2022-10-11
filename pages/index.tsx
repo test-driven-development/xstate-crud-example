@@ -12,10 +12,31 @@ const Home: NextPage = () => {
   return (
     <div>
       {JSON.stringify(state.value)}
-      <button onClick={() => send('onComplete')}>
+      <button
+        onClick={() =>
+          send({
+            type: 'onComplete',
+            todos: [
+              'todo1',
+              'todo2',
+              'todo3',
+              'todo4',
+              'todo5',
+              'todo6',
+            ],
+          })
+        }
+      >
         Complete
       </button>
-      <button onClick={() => send('onError')}>
+      <button
+        onClick={() =>
+          send({
+            type: 'onError',
+            error: 'something went wrong',
+          })
+        }
+      >
         Error
       </button>
     </div>
