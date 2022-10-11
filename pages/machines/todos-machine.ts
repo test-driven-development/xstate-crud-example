@@ -91,12 +91,12 @@ export const todosMachineFactory = () =>
   )
 
 export async function fetch() {
-  return [
+  return Array.from([
     'todo1',
     'todo2',
     'todo3',
     'todo4',
     'todo5',
     'todo6',
-  ]
+  ])
 }
