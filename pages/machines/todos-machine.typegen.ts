@@ -5,16 +5,19 @@ export interface Typegen0 {
   internalEvents: {
     'xstate.init': {type: 'xstate.init'}
   }
-  invokeSrcNameMap: {}
+  invokeSrcNameMap: {
+    fetch: 'done.invoke.todos-machine.fetchIndicated:invocation[0]'
+  }
   missingImplementations: {
     actions: never
-    services: never
+    services: 'fetch'
     guards: never
     delays: never
   }
   eventsCausingActions: {}
+  eventsCausingServices: {
+    fetch: 'xstate.init'
   }
-  eventsCausingServices: {}
   eventsCausingGuards: {}
   eventsCausingDelays: {}
   matchesStates: 'errored' | 'fetchIndicated' | 'fetched'
