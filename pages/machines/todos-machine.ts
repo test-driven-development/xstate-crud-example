@@ -12,6 +12,8 @@ export const todosMachineFactory = () =>
           | {type: 'onComplete'; todos: string[]}
           | {type: 'onError'; error: string},
       },
+      tsTypes:
+        {} as import('./todos-machine.typegen').Typegen0,
       states: {
         fetchIndicated: {
           on: {
