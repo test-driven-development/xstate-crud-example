@@ -1,9 +1,12 @@
 import {useMachine} from '@xstate/react'
 import type {NextPage} from 'next'
-import {helloMachine} from './machines/hello-machine'
+import {useState} from 'react'
+import {todosMachineFactory} from './machines/todos-machine'
 
 const Home: NextPage = () => {
-  const [state, send] = useMachine(helloMachine)
+  const [todosMachine] = useState(todosMachineFactory())
+  const [state, send] = useMachine(todosMachine)
+
   return (
     <div>
       {JSON.stringify(state.value)}

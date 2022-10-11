@@ -1,10 +1,10 @@
 import {createMachine} from 'xstate'
 
-export const todosMachine =
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHRmrIASqAbmAE6QDEqZAsqgK6wwTVolAAHTCWQkuokAA9EWACwBmVZQAMqgOw7lygGwAOAEwBOAKzLLAGhABPJacPnKxgIw7Va4+fMexoYeAL4h9mgY2PjE5FREwmwQnDz8gvzIchKwUjJkcooIWK4elPouni6qxpbmyvZORcaalB5eZoaqhnr++mHhIDQQcHKRmLiEpBTUtAzMSVmS0rJICkombhaalvqWqrWamh4NzjqW7qbaZ6qaxs2q5mER6OMxU-GJkIs5y-mrhSoPC1tFdLIdlJpTDsTk1DK1LncIf5gh5TDoniAxtFJnFvrkVqAAToPOdyiZUZ0anUYVgfDp3B5zJ0XGDdEz+iEgA */
+export const todosMachineFactory = () =>
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHRmrIASqAbmAE6QDEqZAsqgK6wwTVolAAHTCWQkuokAA9EWAEwAWSgEYNygAwA2ZXoDMRvXoAcGowBoQAT0THKygKx7V7natUvzAdg0-PQBfYNs0DGx8YnIqImE2CE4efkF+ZDkJWCkZMjlFBBUdSg8jPxcjAE4jVWVTFxdbB0K9Ss1VKorqytqPULCQGgg4OQjMXEJSCmpaBmZEzMlpWSQFJUqXEp0-Ix0NSuqNHUtzJqUNEt2q2p0dDb8g1VDw9HHoqbiEyEXs5bzVgpBSiVcz6ZTKB57FyuZRnFqUPyqHq7AyVLyqUFPAZjKKTWI-HIrUAFLBaNqqba7faHY4aU72c6qC4aDq6HQufSg-RY0JAA */
   createMachine({
-    id: 'todos-machine',
     predictableActionArguments: true,
+    id: 'todos-machine',
     initial: 'notHovered',
     states: {
       notHovered: {
