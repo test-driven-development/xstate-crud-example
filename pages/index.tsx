@@ -36,6 +36,16 @@ const Home: NextPage = () => {
             Edit
           </button>
         )}
+        {state.matches('edit.update') && (
+          <input
+            onChange={event => {
+              send({
+                type: 'onUpdate',
+                value: event.target.value,
+              })
+            }}
+          ></input>
+        )}
       </div>
     </div>
   )
