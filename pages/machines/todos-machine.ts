@@ -5,21 +5,4 @@ export const todosMachineFactory = () =>
   createMachine({
     predictableActionArguments: true,
     id: 'todos-machine',
-    initial: 'notHovered',
-    states: {
-      notHovered: {
-        on: {
-          onMouseover: {
-            target: 'hovered',
-          },
-        },
-      },
-      hovered: {
-        on: {
-          onMouseout: {
-            target: 'notHovered',
-          },
-        },
-      },
-    },
   })

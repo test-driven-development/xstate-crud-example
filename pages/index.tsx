@@ -7,17 +7,7 @@ const Home: NextPage = () => {
   const [todosMachine] = useState(todosMachineFactory())
   const [state, send] = useMachine(todosMachine)
 
-  return (
-    <div>
-      {JSON.stringify(state.value)}
-      <button onClick={() => send('onMouseover')}>
-        Mouseover
-      </button>
-      <button onClick={() => send('onMouseout')}>
-        Mouseout
-      </button>
-    </div>
-  )
+  return <div>{JSON.stringify(state.value)}</div>
 }
 
 export default Home
