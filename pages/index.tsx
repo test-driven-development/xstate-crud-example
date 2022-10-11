@@ -23,7 +23,11 @@ const Home: NextPage = () => {
     },
   })
 
-  return <div>{JSON.stringify(state.value)}</div>
+  return (
+    <div>
+      <pre>{JSON.stringify(state.value)}</pre>
+    </div>
+  )
 }
 
 export default Home
