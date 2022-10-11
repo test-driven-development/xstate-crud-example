@@ -8,7 +8,10 @@ const Home: NextPage = () => {
     <div>
       {JSON.stringify(state.value)}
       <button onClick={() => send('onMouseover')}>
-        Toggle
+        Mouseover
+      </button>
+      <button onClick={() => send('onMouseout')}>
+        Mouseout
       </button>
     </div>
   )
