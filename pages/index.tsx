@@ -26,6 +26,17 @@ const Home: NextPage = () => {
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
       <pre>{JSON.stringify(state.context)}</pre>
+      <div>
+        {state.matches('read') && (
+          <button
+            onClick={() => {
+              send({type: 'onEdit'})
+            }}
+          >
+            Edit
+          </button>
+        )}
+      </div>
     </div>
   )
 }
