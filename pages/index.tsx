@@ -37,6 +37,22 @@ const Home: NextPage = () => {
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
       <pre>{JSON.stringify(state.context)}</pre>
+      {state.matches('delete-error') && (
+        <>
+          <button
+            onClick={() => {
+              send({type: 'onFetch'})
+            }}
+          >
+            Fetch
+          </button>
+          &#8212;
+          <span>
+            Error: {state.context.error}
+          </span>
+          <p />
+        </>
+      )}
       <div>
         {state.context.todos.map(todo => (
           <div key={todo}>
@@ -55,7 +71,7 @@ const Home: NextPage = () => {
           </div>
         ))}
       </div>
-      <br />
+      <p />
       <div>
         {state.matches('read') && (
           <button

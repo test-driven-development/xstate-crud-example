@@ -30,8 +30,8 @@ export interface Typegen0 {
       type: 'error.platform.todos-machine.indicateFetch:invocation[0]'
       data: unknown
     }
-    'xstate.after(1500)#todos-machine.delete-error': {
-      type: 'xstate.after(1500)#todos-machine.delete-error'
+    'xstate.after(3000)#todos-machine.delete-error': {
+      type: 'xstate.after(3000)#todos-machine.delete-error'
     }
     'xstate.init': {type: 'xstate.init'}
   }
@@ -59,7 +59,8 @@ export interface Typegen0 {
     fetch:
       | 'done.invoke.todos-machine.create.save:invocation[0]'
       | 'done.invoke.todos-machine.delete:invocation[0]'
-      | 'xstate.after(1500)#todos-machine.delete-error'
+      | 'onFetch'
+      | 'xstate.after(3000)#todos-machine.delete-error'
       | 'xstate.init'
     save: 'onSave'
   }
