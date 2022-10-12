@@ -1,7 +1,7 @@
 import {assign, createMachine} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsNm5QAcAdgAs7u84CcPgMwAbO4+gQA0IACe1gCMWq5OMTGBMf42rgGBdnYAvjkRIpi4hKTc0ipybETsYABOtai1lAYANgwAZo04lIViJZI8tBUsVYp8qCpqmrrmRrAmU+ZWCLYZdpQZWtmuMc5aWxHRKz5a-i6u-iEeNs7uW855BehF4qVUtWB4EOzqAKK0yFmxlMZCW1hs-nilBsMQCMQ87kCl2Ch2soR8lH88JCgX2iOc8MeIF6xQk3A+Xx+ZAAImAWqwwED5iCwSsYYFnJQfHZAj4CTCtPY7O5USs4u4YpQ7Bc7DE7P4Fe4bIFXESSa8BpATJQAK4GCCyKkAVX1siZCzMSEs4PlGLsp2caR8yRid38oqwKs5WjlrgyqRS8NV+WJzz6ZKoWuQutNjCpAGU8LxGVa5hbQVblrYIe4XFsZSqeclXB7XLzKEjgjsVe5-ASfGqw6S3pQo5RYEmwJx1FJxkIek2Ndw2x3k2NlAwpto9KngYtM+CfDYtJQldzkoL3L5lR7sk4UsufRvHMlG6Jm5qAe3OzV6o1mm1kJ1at11f1h1fR2BxxNJ+pp+aLILmyNgShs+Z3FowTOLcHoqk4zjSs6+yuNkEoPCGb4RpQEB0gy3ZlH2wiDu+VC4fSjA-pM-4zLOzLzqAWYQicXLykq2QwXWdgekkHKUHEGQBPatxJLkmEkdh5H4XUDRNK0HRdAO55DmReGUUov4ggBdHpqyWCwv46yhHKzigbaHLcVEsQxDYGK4nc9qnLZS55CGZDoHA5hYS25SyCMxCAQx1psoJ0K+Fofg7DC9julZYpaI60LcjCrjxHswRiU8ymkZQFIQIFlqMeCkJOBFwrwryWThHF+n5hsPgZH6UE+OhwZZS8OUyY0BUZkVIXClK2Q+gqxbSqW2QuMxgRZMkfKZaG2XYW2eoGowPV6RCBLQn6vIZGkGUijVfrrEiyUtVBBnuGeHVLZ+nbrcBthORWqSXFBniuL41VHFgeySgGn1ykiwq1td4YtlGD19bYPJnPadZOi6boem4ZwBg6JyyjYYMXtwUlrTpQHQ8uMIuPKQqmZ4So8Vo7iuFKZZ2H4dYeGkOMqZQFAAO4AASwMgsg8zEUPBfpS4YsihmGUkiK1jxMKcoE9heKdPoSuzpEi0xLW5musq4qB27fbEtkrkrdP2DBtMwmJeRAA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsNm5QAcAdgAs7u84CcPgMwAbO4+gQA0IACe1gCMWq5OMTGBMf42rgGBdnYAvjkRIpi4hKTc0ipybETsYABOtai1lAYANgwAZo04lIViJZI8tBUsVYp8qCpqmrrmRrAmU+ZWCLYZdpQZWtmuMc5aWxHRKz5a-i6u-iEeNs7uW855BehF4qVUtWB4EOzqAMIfslmxlMZCW1hs-nilE8PhsgWcqTiN0O1h8ri0lBs8X8oQuMRsaPcjxAvWKEm4AO+6gAImAWqwwED5iCwSsbMkfJRAkFnNl8XsEeEorEtjENj53L5ITE7O5UjZiaTXgMCADGJQAK4GCCyH5kACq2sBSBAcwWZhNy1sdhxlDsp2caR8yRid38KJWgVczkoWhlrgyqRSMQDiuefXJVFVn3VWp1jD1AGU8LxGSazSzLeCIe4XFsLnYvYXkq4PVhXIFOdzgjsve5-AifGHRGS3pRo7JKLAU2BOOopOMhD1w62VWqqN3U2NlAwpto9OngYss2zYRj3AS7MktDZJbChUcsNknCksX7t45ks2Xv1uB31ZPe3UGk1Wh0usOW8q7+Ouz3pxMs7qPOTLmqCK62LuYronYHj7MEzi3GWXpOLygb7K42Ryg8+QkiO35UBAdIMn2ZSDsI+G3oRxGMABkzATMi7MsuoBWhCJyUD4NobtkiENnYZZJPClBxBkAT2rcSS5LhSpUZQRH0gmz6NM0bTIJ0tTdLJkbyTRYB0UB0wLoYS4WqxsTiZxKTeLuNqhLygn4lWWh3PapwErCeS4WQ6BwOY2ltuUsgjMQoGZuZbJiZivhaH4OzsvY7rCiscSOpiXHsui3paME0lPF+cmUmFLGWNmsLQrKroIqcFbOAeIreFybhuAGoSnBu14Rm2ym1MVZmlZFsp2tkfr+P4JawWWmHrM47GBFkHK8p1o4-jGVBxsaJnMf1bENmK6QVmiARwl47hTZhXI4g4Eo5TEAREjJlE6feE49n14ERbY7lcqklw5Z43qhGWexikG3oytysr1stBHtuO72sta3J2g6Toum6wMXCJQQOicW4Ko9BU6QpDIIxBWLsi4Nr2DZngboJLmuHaFZ2H4DYeGkMNyRQADuAAEsDILIfMxGTn13QSlCXJD-hbq6wRJYe+K7Fy9heNyJyujEXORmLA22BKuYblxF57nCgkEhigS7gkfgeb4OF5EAA */
   createMachine(
     {
       context: {
@@ -25,7 +25,7 @@ export const todosMachineFactory = () =>
         },
         events: {} as
           | {
-              type: 'onEdit'
+              type: 'onCreate'
             }
           | {
               type: 'onSave'
@@ -62,8 +62,8 @@ export const todosMachineFactory = () =>
         },
         read: {
           on: {
-            onEdit: {
-              target: 'edit',
+            onCreate: {
+              target: 'create',
             },
             onDelete: {
               target: 'delete',
@@ -71,7 +71,7 @@ export const todosMachineFactory = () =>
           },
         },
         error: {},
-        edit: {
+        create: {
           initial: 'update',
           states: {
             update: {

@@ -59,13 +59,13 @@ const Home: NextPage = () => {
         {state.matches('read') && (
           <button
             onClick={() => {
-              send({type: 'onEdit'})
+              send({type: 'onCreate'})
             }}
           >
-            Edit
+            Create
           </button>
         )}
-        {state.matches('edit.update') && (
+        {state.matches('create.update') && (
           <form
             onSubmit={event => {
               event.preventDefault()
