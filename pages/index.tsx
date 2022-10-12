@@ -27,6 +27,7 @@ const Home: NextPage = () => {
         todos.add(context.todo)
       },
       delete: async (context, event) => {
+        throw new Error('Not implemented')
         todos.delete(event.todo)
       },
     },

@@ -22,6 +22,10 @@ export interface Typegen0 {
       type: 'error.platform.todos-machine.create.save:invocation[0]'
       data: unknown
     }
+    'error.platform.todos-machine.delete:invocation[0]': {
+      type: 'error.platform.todos-machine.delete:invocation[0]'
+      data: unknown
+    }
     'error.platform.todos-machine.indicateFetch:invocation[0]': {
       type: 'error.platform.todos-machine.indicateFetch:invocation[0]'
       data: unknown
@@ -42,6 +46,7 @@ export interface Typegen0 {
   eventsCausingActions: {
     setErrorInContext:
       | 'error.platform.todos-machine.create.save:invocation[0]'
+      | 'error.platform.todos-machine.delete:invocation[0]'
       | 'error.platform.todos-machine.indicateFetch:invocation[0]'
     setTodosInContext: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
     setUpdateInContext: 'onUpdate'
