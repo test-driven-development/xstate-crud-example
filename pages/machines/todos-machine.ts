@@ -1,7 +1,7 @@
 import {assign, createMachine} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAFgBMANkoBGO84Cc7rQ+cOArAAc7s4ANCAAntYAzHYA7JTudgEOUTbuaZ52dgC+2WEimLiEpNzSKnJsROxgAE41qDWUBgA2DABmDTiUBWLFkjy05SyVinyoKmqauuZGsCaT5lYIWClRlHY2QW7ufnZ+6TZhkct23pRa7g4Osc5azgEPNn4OufnoheIlVDVgeBDs6gAorRkDNjKYyItrG4tC40s4oloAo5YllnLEjtC9i43A5kn5nDZnLsXnkQD0ihJuJATJQAK4GCCyAFkACqjNkYLmEKhJ2czkomy0Wn29yRfii6MxCFhN2SsVWaSiDjs7lisVyZLI6Dg5gpn36ZVkw2IXPmZiQlmsKScwSumyikoeUQC0qwjvcOJssUujiiPuCr3J716VO+vwgZp5lqWWFOfkoqVVSo8fmFWkOEWiCMoPgzPqyflifiLNiD+r61LqDSjCxj1kCnqLiLR1zxCLdyQSWg2yNVksuO3LIcpX0oNOQ9I5jFrFtAscRNnOjtuCLVOwebtisKJsRsNkRAURFyyw9Eo-6E9nkPryxiAWXkruUXXgVdWeWhLsgt824zG0CNIcjJCsw2vXkVgcWE7QcB0nSPd9jlsfkvS0REYjQ5tNWyIA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsARgCcAVgAclOzZsAmJw5tOALADMAGwOQQA0IACe1jZaHn6UAOz+DgHOiR5aWUEAvjkRIpi4hKTc0ipybETsYABOtai1lAYANgwAZo04lIViJZI8tBUsVYp8qCpqmrrmRrAmU+ZWCFgeHmmU8RkBGVq+HjYOEdErTolBlKEBWo5B6+5+iXkF6EXipVS1YHgQ7OoAorRkLNjKYyEsYkFrpQAjY-E5YWkgllEgFjjEsgl4VoAnY7H4-KkHHtniBesUJNxICZKABXAwQWR-MgAVQZshB8zBEJW9icWhhiT2fn2eK0TnRKyCQsoTjxctxQTciUCpPJ7wG1OQdPZjGZAGU8LwwJyFmYkJZIYkHJRpZkCc47AF-JKsOcPJdMs4QloVc7cvkya8+pSqFrKLAjWBOOopOMhD1gxSPpRw5HjWNlAwpto9Ba5mbwRblqsDgEYTZpYkVSrQg5Eq73AEPXZa85fJX1k9A+r+lSgRGozV6o1mm1kJ1at1e6HUwP02BMxNs+pc6bucXIU4PfX7XLkiFfK6giEkn5MvE7OKHHZ-HlA2R0HBzDOU+VZCNiOvFpuVmsNs2N4eDecT+HCjY4jadhQnceyhCKJI9kmGrcF8PzfuaoAljYqIuDYzbxM6ZweO6EGxJQfgns6wrVkE55qshfZhiOtQYUWWHWAcdgtvy0G3je1weK6qI2vBxJOEqWjwg4HgMaIyaagO9KMowbE8rY24enCfjZP4dH4WiUTWOcLgycEBLrNxxI2HJbxMXONILmpv62I85aPNBfiOM4Di7sJ+KUHE4rQYqyI2Uh8koWGQLORxf6YoKwqileEpGacJ6BZksSxE6yRuLZIYfLFlp-sBdgwmVZWgSKfiNvari4R4dG+gE55+PeORAA */
   createMachine(
     {
       context: {
@@ -16,10 +16,16 @@ export const todosMachineFactory = () =>
           fetch: {
             data: string[]
           }
+          save: {
+            data: void
+          }
         },
         events: {} as
           | {
               type: 'onEdit'
+            }
+          | {
+              type: 'onSave'
             }
           | {
               type: 'onUpdate'
@@ -63,6 +69,26 @@ export const todosMachineFactory = () =>
                 onUpdate: {
                   actions: 'setUpdateInContext',
                 },
+                onSave: {
+                  target: 'save',
+                },
+              },
+            },
+            save: {
+              invoke: {
+                src: 'save',
+                onDone: [
+                  {
+                    target:
+                      '#todos-machine.indicateFetch',
+                  },
+                ],
+                onError: [
+                  {
+                    actions: 'setErrorInContext',
+                    target: 'update',
+                  },
+                ],
               },
             },
           },

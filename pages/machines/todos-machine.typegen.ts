@@ -3,10 +3,19 @@
 export interface Typegen0 {
   '@@xstate/typegen': true
   internalEvents: {
+    'done.invoke.todos-machine.edit.save:invocation[0]': {
+      type: 'done.invoke.todos-machine.edit.save:invocation[0]'
+      data: unknown
+      __tip: 'See the XState TS docs to learn how to strongly type this.'
+    }
     'done.invoke.todos-machine.indicateFetch:invocation[0]': {
       type: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
       data: unknown
       __tip: 'See the XState TS docs to learn how to strongly type this.'
+    }
+    'error.platform.todos-machine.edit.save:invocation[0]': {
+      type: 'error.platform.todos-machine.edit.save:invocation[0]'
+      data: unknown
     }
     'error.platform.todos-machine.indicateFetch:invocation[0]': {
       type: 'error.platform.todos-machine.indicateFetch:invocation[0]'
@@ -16,29 +25,34 @@ export interface Typegen0 {
   }
   invokeSrcNameMap: {
     fetch: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
+    save: 'done.invoke.todos-machine.edit.save:invocation[0]'
   }
   missingImplementations: {
     actions: never
-    services: 'fetch'
+    services: 'fetch' | 'save'
     guards: never
     delays: never
   }
   eventsCausingActions: {
-    setErrorInContext: 'error.platform.todos-machine.indicateFetch:invocation[0]'
+    setErrorInContext:
+      | 'error.platform.todos-machine.edit.save:invocation[0]'
+      | 'error.platform.todos-machine.indicateFetch:invocation[0]'
     setTodosInContext: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
     setUpdateInContext: 'onUpdate'
   }
   eventsCausingServices: {
-    fetch: 'xstate.init'
+    fetch: 'done.invoke.todos-machine.edit.save:invocation[0]' | 'xstate.init'
+    save: 'onSave'
   }
   eventsCausingGuards: {}
   eventsCausingDelays: {}
   matchesStates:
     | 'edit'
+    | 'edit.save'
     | 'edit.update'
     | 'error'
     | 'indicateFetch'
     | 'read'
-    | {edit?: 'update'}
+    | {edit?: 'save' | 'update'}
   tags: never
 }
