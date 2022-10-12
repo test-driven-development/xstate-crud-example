@@ -41,7 +41,9 @@ export interface Typegen0 {
     setUpdateInContext: 'onUpdate'
   }
   eventsCausingServices: {
-    fetch: 'done.invoke.todos-machine.edit.save:invocation[0]' | 'xstate.init'
+    fetch:
+      | 'done.invoke.todos-machine.edit.save:invocation[0]'
+      | 'xstate.init'
     save: 'onSave'
   }
   eventsCausingGuards: {}

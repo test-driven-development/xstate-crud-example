@@ -44,14 +44,23 @@ const Home: NextPage = () => {
           </button>
         )}
         {state.matches('edit.update') && (
-          <input
-            onChange={event => {
+          <form
+            onSubmit={event => {
+              event.preventDefault()
               send({
-                type: 'onUpdate',
-                value: event.target.value,
+                type: 'onSave',
               })
             }}
-          ></input>
+          >
+            <input
+              onChange={event => {
+                send({
+                  type: 'onUpdate',
+                  value: event.target.value,
+                })
+              }}
+            ></input>
+          </form>
         )}
       </div>
     </div>
