@@ -1,10 +1,16 @@
 import {useMachine} from '@xstate/react'
 import type {NextPage} from 'next'
 import {useState} from 'react'
-import {
-  fetch,
-  todosMachineFactory,
-} from './machines/todos-machine'
+import {todosMachineFactory} from './machines/todos-machine'
+
+const todos = new Set<string>([
+  'todo1',
+  'todo2',
+  'todo3',
+  'todo4',
+  'todo5',
+  'todo6',
+])
 
 const Home: NextPage = () => {
   const [todosMachine] = useState(
@@ -12,7 +18,14 @@ const Home: NextPage = () => {
   )
   const [state, send] = useMachine(todosMachine, {
     services: {
-      fetch: fetch,
+      fetch: async function (): Promise<
+        string[]
+      > {
+        return Array.from(todos)
+      },
+      save: async (context, event) => {
+        todos.add(context.todo)
+      },
     },
   })
 
