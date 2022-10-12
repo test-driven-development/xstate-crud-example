@@ -1,7 +1,7 @@
 import {assign, createMachine} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJhsA2e5S0BGFwA5HdmwE4ANCAAntY+7u7OACwArC5aAMyxAOyuET4AvmkBIpi4hKTc0ipybETsYABO5ajllAYANgwAZtU4lNlieZI8tEUsJYp8qCpqmrrmRrAmI+ZWCLZRETaUcRGJ7h42EfFR9gHBc+5xPpTuNnFe7lHrvi4ZWeg54vlU5WB4EOzqAKK0yOPGpjIM2sLh8cUSlAiLgWLjOPmiUPcexC9ghiS2Pkc9nc8Xs0TuIHauQk3EgJkoAFcDBBZJ8yABVamyf6TQHAuZ2dwQ1ZaRKc7ERRYRZFzewrSguexaCL2WHSjxcglEp5dMnISlMxh0gDKeF4YBZUzMSEsINCS0SfPsNh2NkSPg8uyC1j5UUoazcUXBQq9SoeHRJVDVlFgerAnHUUkGQja-uJz0owdD+oGygYI20ehNEyNQJNs3mNi0kJciTiVxiCRFWFimMoZxiNqhjji7j9onjqt+IbDZUq1VqDWQzXKrWVnVJ3eTYFTQ3T6kzhrZ+bN7mOqIccS0rkSjri1etx23Np8NhcEXOsLbBLI6Dg5nHge6MkYfWIS+mK45CyWi3sUS0ex4RccEnX2LAfEg+tNg8MsHR9dtHgnF43ggD9jVAAsi2ies4hsU5UhtdZeWrHwy3dBx4TLU5LU8RCAwTCoqnKdC80w6wbW3Zx1iiAC1zWc5EgPUITk4xIolPBZIPsejO0nckqRpRhWPZWxYWOTZoi5MJUlWMCXQSd13EWNxVj-fFMkJOMVXk9VpxUr8azWYsri0M4tAk5IHSE505nEiF8PPMUxUlaE4lkmyg1+Bz2I5BIXEhZI+XwgUhWrU4NJxPktDIhIHVuSzH2eGLTW-RxIQcACgKhUDqzcbFcMWS0ZXhI4MgyIA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsNm5QAcAdgAs7u84CcPgMwAbO4+gQA0IACe1gCMWq5OMTGBMf42rgGBdnYAvjkRIpi4hKTc0ipybETsYABOtai1lAYANgwAZo04lIViJZI8tBUsVYp8qCpqmrrmRrAmU+ZWCLYZdpQZWtmuMc5aWxHRKz5a-i6u-iEeNs7uW855BehF4qVUtWB4EOzqAKK0yFmxlMZCW1hs-nilBsMQCMQ87kCl2Ch2soR8lH88JCgX2iOc8MeIF6xQk3A+Xx+ZAAImAWqwwED5iCwSsYYFnJQfHZAj4CTCtPY7O5USs4u4YpQ7Bc7DE7P4Fe4bIFXESSa8BpATJQAK4GCCyKkAVX1siZCzMSEs4PlGLsp2caR8yRid38oqwKs5WjlrgyqRS8NV+WJzz6ZKoWuQutNjCpAGU8LxGVa5hbQVblrYIe4XFsZSqeclXB7XLzKEjgjsVe5-ASfGqw6S3pQo5RYEmwJx1FJxkIek2Ndw2x3k2NlAwpto9KngYtM+CfDYtJQldzkoL3L5lR7sk4UsufRvHMlG6Jm5qAe3OzV6o1mm1kJ1at11f1h1fR2BxxNJ+pp+aLILmyNgShs+Z3FowTOLcHoqk4zjSs6+yuNkEoPCGb4RpQEB0gy3ZlH2wiDu+VC4fSjA-pM-4zLOzLzqAWYQicXLykq2QwXWdgekkHKUHEGQBPatxJLkmEkdh5H4XUDRNK0HRdAO55DmReGUUov4ggBdHpqyWCwv46yhHKzigbaHLcVEsQxDYGK4nc9qnLZS55CGZDoHA5hYS25SyCMxCAQx1psoJ0K+Fofg7DC9julZYpaI60LcjCrjxHswRiU8ymkZQFIQIFlqMeCkJOBFwrwryWThHF+n5hsPgZH6UE+OhwZZS8OUyY0BUZkVIXClK2Q+gqxbSqW2QuMxgRZMkfKZaG2XYW2eoGowPV6RCBLQn6vIZGkGUijVfrrEiyUtVBBnuGeHVLZ+nbrcBthORWqSXFBniuL41VHFgeySgGn1ykiwq1td4YtlGD19bYPJnPadZOi6boem4ZwBg6JyyjYYMXtwUlrTpQHQ8uMIuPKQqmZ4So8Vo7iuFKZZ2H4dYeGkOMqZQFAAO4AASwMgsg8zEUPBfpS4YsihmGUkiK1jxMKcoE9heKdPoSuzpEi0xLW5musq4qB27fbEtkrkrdP2DBtMwmJeRAA */
   createMachine(
     {
       context: {
@@ -19,6 +19,9 @@ export const todosMachineFactory = () =>
           save: {
             data: void
           }
+          delete: {
+            data: void
+          }
         },
         events: {} as
           | {
@@ -30,6 +33,10 @@ export const todosMachineFactory = () =>
           | {
               type: 'onUpdate'
               value: string
+            }
+          | {
+              type: 'onDelete'
+              todo: string
             },
       },
       predictableActionArguments: true,
@@ -57,6 +64,9 @@ export const todosMachineFactory = () =>
           on: {
             onEdit: {
               target: 'edit',
+            },
+            onDelete: {
+              target: 'delete',
             },
           },
         },
@@ -93,6 +103,22 @@ export const todosMachineFactory = () =>
             },
           },
         },
+        delete: {
+          invoke: {
+            src: 'delete',
+            onDone: [
+              {
+                target: 'indicateFetch',
+              },
+            ],
+            onError: [
+              {
+                target: 'new state 1',
+              },
+            ],
+          },
+        },
+        'new state 1': {},
       },
     },
     {

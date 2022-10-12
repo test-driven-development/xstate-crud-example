@@ -26,6 +26,9 @@ const Home: NextPage = () => {
       save: async (context, event) => {
         todos.add(context.todo)
       },
+      delete: async (context, event) => {
+        todos.delete(event.todo)
+      },
     },
   })
 
@@ -33,6 +36,25 @@ const Home: NextPage = () => {
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
       <pre>{JSON.stringify(state.context)}</pre>
+      <div>
+        {state.context.todos.map(todo => (
+          <div key={todo}>
+            <button
+              onClick={() => {
+                send({
+                  type: 'onDelete',
+                  todo,
+                })
+              }}
+            >
+              Delete
+            </button>
+            &#8212;
+            <span>{todo}</span>
+          </div>
+        ))}
+      </div>
+      <br />
       <div>
         {state.matches('read') && (
           <button
