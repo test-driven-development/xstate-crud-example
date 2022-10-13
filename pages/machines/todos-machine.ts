@@ -1,7 +1,7 @@
 import {assign, createMachine} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBiYyxAxBhdWQG6oBrKmgzZ8xclRp0GzVsQTl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsNm5QAcAdgAs7u84CcPgMwAbO4+gQA0IACe1gCMWq5OMTGBMf42rgGBdnYAvjkRIpi4hKTc0ipybETsYABOtai1lAYANgwAZo04lIViJZI8tBUsVYp8qCpqmrrmRrAmU+ZWCLYZdpQZWtmuMc5aWxHRKz5a-i6u-iEeNs7uW855BehF4qVUtWB4EOzqAMIfslmxlMZCW1hs-nilE8PhsgWcqTiN0O1h8ri0lBs8X8oQuMRsaPcjxAvWKEm4AO+6gAImAWqwwED5iCwSsbMkfJRAkFnNl8XsEeEorEtjENj53L5ITE7O5UjZiaTXgMCADGJQAK4GCCyH5kACq2sBSBAcwWZhNy1sdhxlDsp2caR8yRid38KJWgVczkoWhlrgyqRSMQDiuefXJVFVn3VWp1jD1AGU8LxGSazSzLeCIe4XFsLnYvYXkq4PVhXIFOdzgjsve5-AifGHRGS3pRo7JKLAU2BOOopOMhD1w62VWqqN3U2NlAwpto9OngYss2zYRj3AS7MktDZJbChUcsNknCksX7t45ks2Xv1uB31ZPe3UGk1Wh0usOW8q7+Ouz3pxMs7qPOTLmqCK62LuYronYHj7MEzi3GWXpOLygb7K42Ryg8+QkiO35UBAdIMn2ZSDsI+G3oRxGMABkzATMi7MsuoBWhCJyUD4NobtkiENnYZZJPClBxBkAT2rcSS5LhSpUZQRH0gmz6NM0bTIJ0tTdLJkbyTRYB0UB0wLoYS4WqxsRcZybj7IhXGFpcgklpxvKpAkG5aL4RIyZROkKQyWDKbUeojMQoGZuZbLwmcvgpFoKT+CGIQCcKKz4gSnGuhcPgIuiMQSteEZtn5jABfUjTsBYsDIJ2eDtIwtQABSQvsACU7DaUVemlS+YUsZY4K3D6gSBB5mGEjsFyCXC6yFg4laVglGT+HkuFkOgcDmB1AzlLIIVEL1Zn9WyYmYr4Wh+Ds7L2O6KVYHEjqYlx7Lot6cVeAVo4Up8EAHeBEWQbC0Kyq6CKnBWzgHiK3hcm4bgBqEpwbh9BGUIFv2sqssp2tkfr+AlRalrdmHrM47HDVula8sjcn3lQcbGiZzGHWxDZiukFZogEcJeO4ZYBus3JPRKcV5Zc1M6bTf6pujEFYmkXKpJcb3uN6oRlnsYpBt6MrcrK9bi22tMy-99jcnaDpOi6brqxcIlBA6Jxbgq3lfnJxVpozYEY1i7IuDa9jeLung2IJWgq3aFZ2H4DYeGkBsDO73WNMbR13RK0EjRJWWXTEU3ZOKeNyrKfpZDhTyu5GKdsRKuYblxF57nCgl464drBDazqOl42UrTkQA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBKYeEAxBhdWQG6oBrKmgzZ8xclRp0GzVhATl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsNm5QAcAdgAs7u84CcPgMwAbO4+gQA0IACe1gCMWq5OMTGBMf42rgGBdnYAvjkRIpi4hKTc0ipybOxgAE41qDWUBgA2DABmDTiUhWIlkjy0FSxsinyoKmqauuZGsCaT5lYIthl2lBla2a4xzlqbEdHLPlr+Lq7+IR42zu6bznkF6EXipVQ18uzqAMLvsjPGpjIi2sNn88Uonh8NkCzlScWuB2sPlcWkoNni-lC5xiNmR7geIB6xQk3F+HHUABEwM0wIx-nNAcDljZkj5KIEgs5sjjdrDwlFYpsYusfO5fGCYnZ3KkbASiS9+gRfoxKABXAwQWSfMgAVQ1fyQIFm8zMhqWtjsmModhOzjSPmSMVu-kRy0CrmclC0ktcGVSKRivrlT16JKoStYKvVmsY2oAynheGB6SagWaQaD3C5Nuc7O688lXK6sK5AmyOcFtu73P5YT5g6Jia9KBHZJRYImwJx1FIxkJuiGm4rlVQO0nRsoGJNtHpDcbGenmVDUe5cXZklobGKofzDlhsk4UujvRvHMkG88+txWyqx13avVGi12p0B42FdeR+3OxPxlP1DOKYLqA5qONK6w5rcWjBM4NzFu6Thcn6eyuNk0r3PkhKDh+VAQNStJdlwvb8P28pXrh+GML+EwAdMc4Agsi62JiqI+Jaq7ZLBtZ2MWSQwpQcQZAENo3EkuSYWRYaUHhNKxg+DRNK0yAdDUXSSc2MkEdR-5TLOhgMaaIGxGxbJuHssFsXmFy8YWlA+FyqQJKuWi+PiEnYeR0mUWAWDyTU2rDBAQGMUZzIwqcvgpNBcIeGxvGOGyDruOc9mBt6ooXqGGneb5dQNOwFiwMgbZ4G0jA1AAFGCewAJTsOp-SaYwuWPsFhmWCCNyeoEgQuaheLbOc8VZNaWTQqEASBgEeSYWQ6BwOYDVlGQgyyIFbVpqFKx+GivhaH42wsvYLoCsscR2mibEsiiHrQV4mVDqS8gbUyti4k4XjSmKcT+KWzi7oK3jsm4bi+qEJyrg9OGUH5L1MekUrWtk3r+P4hZ2EWp0ltkLigqEWSslyUOeTeVDRga+kMiFHXMrWwrpKWyIBNCn3Fr6awcldorRQEbmPO+JNfnecNbeiaTsqkFx3clkXFrswr+h6koclKNbE1JpMizTFoctatr2o6zpy+cAlBLaxzrrK7kC1JTXJvRVPtaBm7ClyaScVung2LxWjJdapZ2H4tYeGk6vZbJPmww7qavTEorCqWmx9Zih0xPFOMZKj0pSt6WQYfzl5hlroGilmq5sae27QrxqOuKNXhoy5Nagv4M05EAA */
   createMachine(
     {
       context: {
@@ -13,7 +13,7 @@ export const todosMachineFactory = () =>
         {} as import('./todos-machine.typegen').Typegen0,
       schema: {
         services: {} as {
-          fetch: {
+          read: {
             data: string[]
           }
           save: {
@@ -39,16 +39,16 @@ export const todosMachineFactory = () =>
               todo: string
             }
           | {
-              type: 'onFetch'
+              type: 'onRead'
             },
       },
       predictableActionArguments: true,
       id: 'todos-machine',
-      initial: 'indicateFetch',
+      initial: 'indicateRead',
       states: {
-        indicateFetch: {
+        indicateRead: {
           invoke: {
-            src: 'fetch',
+            src: 'read',
             onDone: [
               {
                 actions: 'setTodosInContext',
@@ -93,7 +93,7 @@ export const todosMachineFactory = () =>
                 onDone: [
                   {
                     target:
-                      '#todos-machine.indicateFetch',
+                      '#todos-machine.indicateRead',
                   },
                 ],
                 onError: [
@@ -111,7 +111,7 @@ export const todosMachineFactory = () =>
             src: 'delete',
             onDone: [
               {
-                target: 'indicateFetch',
+                target: 'indicateRead',
               },
             ],
             onError: [
@@ -125,12 +125,12 @@ export const todosMachineFactory = () =>
         'delete-error': {
           after: {
             '3000': {
-              target: 'indicateFetch',
+              target: 'indicateRead',
             },
           },
           on: {
-            onFetch: {
-              target: 'indicateFetch',
+            onRead: {
+              target: 'indicateRead',
             },
           },
         },

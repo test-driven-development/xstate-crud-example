@@ -13,8 +13,8 @@ export interface Typegen0 {
       data: unknown
       __tip: 'See the XState TS docs to learn how to strongly type this.'
     }
-    'done.invoke.todos-machine.indicateFetch:invocation[0]': {
-      type: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
+    'done.invoke.todos-machine.indicateRead:invocation[0]': {
+      type: 'done.invoke.todos-machine.indicateRead:invocation[0]'
       data: unknown
       __tip: 'See the XState TS docs to learn how to strongly type this.'
     }
@@ -26,8 +26,8 @@ export interface Typegen0 {
       type: 'error.platform.todos-machine.delete:invocation[0]'
       data: unknown
     }
-    'error.platform.todos-machine.indicateFetch:invocation[0]': {
-      type: 'error.platform.todos-machine.indicateFetch:invocation[0]'
+    'error.platform.todos-machine.indicateRead:invocation[0]': {
+      type: 'error.platform.todos-machine.indicateRead:invocation[0]'
       data: unknown
     }
     'xstate.after(3000)#todos-machine.delete-error': {
@@ -37,12 +37,12 @@ export interface Typegen0 {
   }
   invokeSrcNameMap: {
     delete: 'done.invoke.todos-machine.delete:invocation[0]'
-    fetch: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
+    read: 'done.invoke.todos-machine.indicateRead:invocation[0]'
     save: 'done.invoke.todos-machine.create.save:invocation[0]'
   }
   missingImplementations: {
     actions: never
-    services: 'fetch' | 'save' | 'delete'
+    services: 'read' | 'save' | 'delete'
     guards: never
     delays: never
   }
@@ -50,16 +50,16 @@ export interface Typegen0 {
     setErrorInContext:
       | 'error.platform.todos-machine.create.save:invocation[0]'
       | 'error.platform.todos-machine.delete:invocation[0]'
-      | 'error.platform.todos-machine.indicateFetch:invocation[0]'
-    setTodosInContext: 'done.invoke.todos-machine.indicateFetch:invocation[0]'
+      | 'error.platform.todos-machine.indicateRead:invocation[0]'
+    setTodosInContext: 'done.invoke.todos-machine.indicateRead:invocation[0]'
     setUpdateInContext: 'onUpdate'
   }
   eventsCausingServices: {
     delete: 'onDelete'
-    fetch:
+    read:
       | 'done.invoke.todos-machine.create.save:invocation[0]'
       | 'done.invoke.todos-machine.delete:invocation[0]'
-      | 'onFetch'
+      | 'onRead'
       | 'xstate.after(3000)#todos-machine.delete-error'
       | 'xstate.init'
     save: 'onSave'
@@ -73,7 +73,7 @@ export interface Typegen0 {
     | 'delete'
     | 'delete-error'
     | 'error'
-    | 'indicateFetch'
+    | 'indicateRead'
     | 'read'
     | {create?: 'save' | 'update'}
   tags: never

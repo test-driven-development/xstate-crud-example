@@ -18,9 +18,7 @@ const Home: NextPage = () => {
   )
   const [state, send] = useMachine(todosMachine, {
     services: {
-      fetch: async function (): Promise<
-        string[]
-      > {
+      read: async function (): Promise<string[]> {
         return Array.from(todos)
       },
       save: async (context, event) => {
@@ -37,41 +35,6 @@ const Home: NextPage = () => {
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
       <pre>{JSON.stringify(state.context)}</pre>
-      {state.matches('delete-error') && (
-        <>
-          <button
-            onClick={() => {
-              send({type: 'onFetch'})
-            }}
-          >
-            Fetch
-          </button>
-          &#8212;
-          <span>
-            Error: {state.context.error}
-          </span>
-          <p />
-        </>
-      )}
-      <div>
-        {state.context.todos.map(todo => (
-          <div key={todo}>
-            <button
-              onClick={() => {
-                send({
-                  type: 'onDelete',
-                  todo,
-                })
-              }}
-            >
-              Delete
-            </button>
-            &#8212;
-            <span>{todo}</span>
-          </div>
-        ))}
-      </div>
-      <p />
       <div>
         {state.matches('read') && (
           <button
@@ -82,26 +45,61 @@ const Home: NextPage = () => {
             Create
           </button>
         )}
-        {state.matches('create.update') && (
-          <form
-            onSubmit={event => {
-              event.preventDefault()
-              send({
-                type: 'onSave',
-              })
+        <p></p>
+        {state.matches('read') &&
+          state.context.todos.map(todo => (
+            <div key={todo}>
+              <button
+                onClick={() => {
+                  send({
+                    type: 'onDelete',
+                    todo,
+                  })
+                }}
+              >
+                Delete
+              </button>
+              &#8212;
+              <span>{todo}</span>
+            </div>
+          ))}
+      </div>
+      <p />
+      {state.matches('delete-error') && (
+        <>
+          <span>
+            Error: {state.context.error}
+          </span>
+          <p />
+          <button
+            onClick={() => {
+              send({type: 'onRead'})
             }}
           >
-            <input
-              onChange={event => {
-                send({
-                  type: 'onUpdate',
-                  value: event.target.value,
-                })
-              }}
-            ></input>
-          </form>
-        )}
-      </div>
+            Go Back to Read
+          </button>
+        </>
+      )}
+
+      {state.matches('create.update') && (
+        <form
+          onSubmit={event => {
+            event.preventDefault()
+            send({
+              type: 'onSave',
+            })
+          }}
+        >
+          <input
+            onChange={event => {
+              send({
+                type: 'onUpdate',
+                value: event.target.value,
+              })
+            }}
+          ></input>
+        </form>
+      )}
     </div>
   )
 }
