@@ -47,6 +47,7 @@ export const todosMachineFactory = () =>
       initial: 'indicateRead',
       states: {
         indicateRead: {
+          entry: 'clearErrorsFromContext',
           invoke: {
             src: 'read',
             onDone: [
@@ -153,6 +154,13 @@ export const todosMachineFactory = () =>
             todo: event.value,
           }
         }),
+        clearErrorsFromContext: assign(
+          (context, _) => {
+            return {
+              error: undefined,
+            }
+          },
+        ),
       },
     },
   )

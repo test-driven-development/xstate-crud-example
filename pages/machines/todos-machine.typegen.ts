@@ -47,6 +47,12 @@ export interface Typegen0 {
     delays: never
   }
   eventsCausingActions: {
+    clearErrorsFromContext:
+      | 'done.invoke.todos-machine.create.save:invocation[0]'
+      | 'done.invoke.todos-machine.delete:invocation[0]'
+      | 'onRead'
+      | 'xstate.after(3000)#todos-machine.delete-error'
+      | 'xstate.init'
     setErrorInContext:
       | 'error.platform.todos-machine.create.save:invocation[0]'
       | 'error.platform.todos-machine.delete:invocation[0]'
