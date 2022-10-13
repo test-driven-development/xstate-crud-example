@@ -3,14 +3,7 @@ import type {NextPage} from 'next'
 import {useState} from 'react'
 import {todosMachineFactory} from './machines/todos-machine'
 
-const todos = new Set<string>([
-  'todo1',
-  'todo2',
-  'todo3',
-  'todo4',
-  'todo5',
-  'todo6',
-])
+const todos = new Set<string>([])
 
 const Home: NextPage = () => {
   const [todosMachine] = useState(
@@ -25,7 +18,6 @@ const Home: NextPage = () => {
         todos.add(context.todo)
       },
       delete: async (context, event) => {
-        throw new Error('Not implemented')
         todos.delete(event.todo)
       },
     },

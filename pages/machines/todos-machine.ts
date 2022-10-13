@@ -1,7 +1,7 @@
 import {assign, createMachine} from 'xstate'
 
 export const todosMachineFactory = () =>
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBKYeEAxBhdWQG6oBrKmgzZ8xclRp0GzVhATl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsNm5QAcAdgAs7u84CcPgMwAbO4+gQA0IACe1gCMWq5OMTGBMf42rgGBdnYAvjkRIpi4hKTc0ipybOxgAE41qDWUBgA2DABmDTiUhWIlkjy0FSxsinyoKmqauuZGsCaT5lYIthl2lBla2a4xzlqbEdHLPlr+Lq7+IR42zu6bznkF6EXipVQ18uzqAMLvsjPGpjIi2sNn88Uonh8NkCzlScWuB2sPlcWkoNni-lC5xiNmR7geIB6xQk3F+HHUABEwM0wIx-nNAcDljZkj5KIEgs5sjjdrDwlFYpsYusfO5fGCYnZ3KkbASiS9+gRfoxKABXAwQWSfMgAVQ1fyQIFm8zMhqWtjsmModhOzjSPmSMVu-kRy0CrmclC0ktcGVSKRivrlT16JKoStYKvVmsY2oAynheGB6SagWaQaD3C5Nuc7O688lXK6sK5AmyOcFtu73P5YT5g6Jia9KBHZJRYImwJx1FIxkJuiGm4rlVQO0nRsoGJNtHpDcbGenmVDUe5cXZklobGKofzDlhsk4UujvRvHMkG88+txWyqx13avVGi12p0B42FdeR+3OxPxlP1DOKYLqA5qONK6w5rcWjBM4NzFu6Thcn6eyuNk0r3PkhKDh+VAQNStJdlwvb8P28pXrh+GML+EwAdMc4Agsi62JiqI+Jaq7ZLBtZ2MWSQwpQcQZAENo3EkuSYWRYaUHhNKxg+DRNK0yAdDUXSSc2MkEdR-5TLOhgMaaIGxGxbJuHssFsXmFy8YWlA+FyqQJKuWi+PiEnYeR0mUWAWDyTU2rDBAQGMUZzIwqcvgpNBcIeGxvGOGyDruOc9mBt6ooXqGGneb5dQNOwFiwMgbZ4G0jA1AAFGCewAJTsOp-SaYwuWPsFhmWCCNyeoEgQuaheLbOc8VZNaWTQqEASBgEeSYWQ6BwOYDVlGQgyyIFbVpqFKx+GivhaH42wsvYLoCsscR2mibEsiiHrQV4mVDqS8gbUyti4k4XjSmKcT+KWzi7oK3jsm4bi+qEJyrg9OGUH5L1MekUrWtk3r+P4hZ2EWp0ltkLigqEWSslyUOeTeVDRga+kMiFHXMrWwrpKWyIBNCn3Fr6awcldorRQEbmPO+JNfnecNbeiaTsqkFx3clkXFrswr+h6koclKNbE1JpMizTFoctatr2o6zpy+cAlBLaxzrrK7kC1JTXJvRVPtaBm7ClyaScVung2LxWjJdapZ2H4tYeGk6vZbJPmww7qavTEorCqWmx9Zih0xPFOMZKj0pSt6WQYfzl5hlroGilmq5sae27QrxqOuKNXhoy5Nagv4M05EAA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FWwLQFsCGAxgBYCWAdmAHTkQkF7JgBKYeEAxBhdWQG6oBrKmgzZ8xclRp0GzVhATl+9ZCVRkA2gAYAuolAAHTCVXr9IAB6IsAJgCsAFgeUAHAGYXAdgBs3u3ZsHbzcAGhAAT2sARiibG1cATm8kt0cXOzckgF8ssJFMXEJSbmkVOTZ2MAAnKtQqygMAGwYAMzqcSnyxIskeWjKWNkU+VBU1TV1zI1gTcfMrBFsfBMoErQSkrU8HKIcEt1CI6xcXb0pPO1PvWOvvG083HLz0AvFiqir5dnUAYU-ZKbGUxkebWGxuLaUJwJGzeFxRNxRLQ2FxhSKLBKeLSUGxbTLeB6xTEOJ4gLqFCTcf4cdQAETAjTAjEBM2BoMWNiiyUowTh-liLi08O8aOiWjsUXOCQcLn2WiijgRNlJ5LevQI-0YlAArgYILJvmQAKp6gFIEDTWZmc0LWwZFZ2LQeNw2BJc3ZO0WLAkuSjyuyeTxutzXKKBlUvbqUqga1ha3X6xiGgDKeF4YBZVpBNrB4OcgoDqQJdluni9WGWPJDDk8XO2HiiCQjogp70osdklFgabAnHUUhGQk6kdb6s1VG76eGygY420enNlrZOY5bpWbgc9ghJa8yIc5cczm8WmuGxP7ll3mbrx63A7WsnveqtXqTVa7WHLbVd-HXZ709GWd1HnTNl1AW04h2c5xW2LQTxlFx9yOb1PHidIgyRLZ-B2FxryjNsIAZJley4Ad+CHVVbyoQjGUYACxmAyZFyBOYV1sEMVlddZpQDXY-HLWIET9ANghrIVvCcK9cjJEdv2ooik2fOoGmaZA2iqDpKOjSgaOI+igImBdDBY61wOiTZVmSXFrhwySBKiWVVn2BVkkyBJLjsPDR24XTGCwJSqkNQYIFA1izI5CS0KDOxpRhIVkQE+5fSRO4nE5OCA2VaStIIhSwH8mo6nYCxYGQTs8BaRgqgACghOCAEp2By3pfPygLQtMywwROSUSxRJxaz2S4kPRLAESE1JN0dMNj22JtSTIdA4HMZqSjIfpZGCjrs3C2wTjcKFcSRRx3JdXZ7MRSgw0dU53M8W6vLkyhqW29lbFdeIHEVGUkTcHxTgE8VfThe7AyDY8Nyy54vyoyh2uY1kwq6jlUOB7YdhBlwbHLB5fSxYMnUdazPOy2TYfvKgEzNYzEc6iCGxxQNkiDF0JMcHGLirdzXQcE9Gw3R7yd-R9XrY3EXR5BEN3gmtL3LQVJQRH0XMmhxHlJmHtIp0XdvsYJKEdZ1XXdXnDlGrwDqVp1j2PWE7kF7TWp15HbGRSV0hdfwsacTdAZrA2fBi-YvDVqGZM13LaLawqqmd21G03VwYoyeKYX5ASIQO-Ha2PcUnCxh33jjsFpQOyGU53LFAgz9JKFSVJcXR+x3ByHIgA */
   createMachine(
     {
       context: {
@@ -53,7 +53,11 @@ export const todosMachineFactory = () =>
             onDone: [
               {
                 actions: 'setTodosInContext',
+                cond: 'notEmpty',
                 target: 'read',
+              },
+              {
+                target: 'create',
               },
             ],
             onError: [
@@ -138,6 +142,11 @@ export const todosMachineFactory = () =>
       },
     },
     {
+      guards: {
+        notEmpty: (_, event) => {
+          return event.data.length > 0
+        },
+      },
       actions: {
         setTodosInContext: assign((_, event) => {
           return {

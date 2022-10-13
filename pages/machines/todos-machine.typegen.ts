@@ -70,7 +70,9 @@ export interface Typegen0 {
       | 'xstate.init'
     save: 'onSave'
   }
-  eventsCausingGuards: {}
+  eventsCausingGuards: {
+    notEmpty: 'done.invoke.todos-machine.indicateRead:invocation[0]'
+  }
   eventsCausingDelays: {}
   matchesStates:
     | 'create'
